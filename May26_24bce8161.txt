@@ -1,0 +1,49 @@
+show databases;
+
+create database VITBranches;
+
+use VITBranches;
+
+create table AIML(
+  student_id INT,
+  student_name VARCHAR(50),
+  student_marks INT
+);
+
+create table CSE(
+  student_id INT,
+  student_name VARCHAR(50),
+  student_marks INT
+);
+
+create table ECE(
+  student_id INT,
+  student_name VARCHAR(50),
+  student_marks INT
+);
+
+SHOW tables;
+
+INSERT INTO AIML VALUES(1001,'Sashank',97);
+INSERT INTO AIML VALUES(1002,'Kishore',86);
+INSERT INTO AIML VALUES(1003,'Praneeth',84);
+INSERT INTO AIML VALUES(1004,'Rohit',100);
+INSERT INTO AIML VALUES(1005,'HariKrishna',99);
+
+INSERT INTO CSE VALUES(2001,'Sharon',75);
+INSERT INTO CSE VALUES(2002,'Sam',87);
+INSERT INTO CSE VALUES(2003,'Andrew',92);
+INSERT INTO CSE VALUES(2004,'Emmanuel',96);
+INSERT INTO CSE VALUES(2005,'Yaswanth',89);
+
+INSERT INTO ECE VALUES(301,'Mahesh',99);
+INSERT INTO ECE VALUES(302,'Nani',96);
+INSERT INTO ECE VALUES(303,'Kalyan',85);
+INSERT INTO ECE VALUES(304,'Prabhas',89);
+INSERT INTO ECE VALUES(305,'Arjun',77);
+
+SELECT * FROM AIML;
+
+SELECT * FROM CSE;
+
+SELECT * FROM ECE;
