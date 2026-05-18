@@ -1,0 +1,125 @@
+SHOW DATABASES;
+
+CREATE DATABASE UniversityData;
+
+USE UniversityData;
+
+CREATE TABLE AIML(
+  student_id INT,
+  student_name VARCHAR(50),
+  student_marks INT
+);
+
+CREATE TABLE CSE(
+  student_id INT,
+  student_name VARCHAR(50),
+  student_marks INT
+);
+
+CREATE TABLE ECE(
+  student_id INT,
+  student_name VARCHAR(50),
+  student_marks INT
+);
+
+SHOW TABLES;
+
+INSERT INTO AIML VALUES(201,'Sashank',96);
+INSERT INTO AIML VALUES(202,'Kishore',88);
+INSERT INTO AIML VALUES(203,'Durgesh',91);
+
+SELECT * FROM AIML;
+
+DESC AIML;
+
+-- Adding Column without default value
+ALTER TABLE AIML ADD(
+  studentPhone BIGINT
+);
+
+INSERT INTO AIML VALUES(204,'Rohit',95,9876543210);
+
+SELECT * FROM AIML;
+
+-- Adding column with default value
+ALTER TABLE AIML ADD(
+  studentRole VARCHAR(15) DEFAULT 'Analyst'
+);
+
+INSERT INTO AIML VALUES(205,'Hari',99,9123456789,'Tester');
+
+SELECT * FROM AIML;
+
+-- Dropping a table column
+ALTER TABLE AIML DROP COLUMN studentPhone;
+
+SELECT * FROM AIML;
+
+-- Delete all rows
+TRUNCATE TABLE AIML;
+
+-- Drop complete table
+DROP TABLE AIML;
+
+-- Rename table
+RENAME TABLE ECE TO EEE;
+
+CREATE TABLE Staff (
+    STAFF_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    FIRST_NAME CHAR(25),
+    LAST_NAME CHAR(25),
+    SALARY INT(15),
+    JOINING_DATE DATETIME,
+    DEPARTMENT CHAR(25)
+);
+
+INSERT INTO Staff (STAFF_ID, FIRST_NAME, LAST_NAME, SALARY, JOINING_DATE, DEPARTMENT) VALUES
+    (101, 'Praneeth', 'Kumar', 120000, '15-03-12 09.00.00', 'HR'),
+    (102, 'Saketh', 'Reddy', 85000, '16-07-18 10.00.00', 'Admin'),
+    (103, 'Chinna', 'Naidu', 250000, '14-05-20 09.30.00', 'Finance'),
+    (104, 'Deepthi', 'Sharma', 450000, '13-08-25 11.00.00', 'Admin'),
+    (105, 'Sujata', 'Devi', 300000, '17-01-15 09.15.00', 'HR'),
+    (106, 'Rohit', 'Varma', 150000, '18-06-11 08.45.00', 'Testing'),
+    (107, 'Hari', 'Krishna', 95000, '19-02-10 09.20.00', 'Support'),
+    (108, 'Kishore', 'Babu', 70000, '20-09-14 10.10.00', 'Accounts');
+
+-- Updating a specific row
+UPDATE Staff 
+SET FIRST_NAME='Sashank' 
+WHERE STAFF_ID=101;
+
+-- Updating whole column
+UPDATE Staff 
+SET SALARY = SALARY + 10000;
+
+-- Deleting a row
+DELETE FROM Staff 
+WHERE STAFF_ID=108;
+
+-- TCL Commands
+CREATE TABLE Employees(
+  EMP_ID INT
+);
+
+START TRANSACTION;
+
+INSERT INTO Employees VALUES(301);
+
+SAVEPOINT point1;
+
+INSERT INTO Employees VALUES(302);
+
+SAVEPOINT point2;
+
+SELECT * FROM Employees;
+
+ROLLBACK TO point1;
+
+SELECT * FROM Employees;
+
+-- WHERE Clause examples
+SELECT * FROM Staff WHERE SALARY < 100000;
+
+SELECT * FROM Staff WHERE SALARY > 200000;
+
+SELECT * FROM Staff WHERE SALARY = 160000;
