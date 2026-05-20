@@ -1,0 +1,110 @@
+USE VITBranches;
+
+SHOW TABLES FROM VITBranches;
+
+CREATE TABLE Persons (
+    ID INT NOT NULL,
+    LastName VARCHAR(255) UNIQUE NOT NULL,
+    FirstName VARCHAR(255) NOT NULL,
+    Age INT
+);
+
+DESC Persons;
+
+ALTER TABLE Persons
+ADD CONSTRAINT unique_age UNIQUE (Age);
+
+DESC Persons;
+
+ALTER TABLE Persons
+DROP CONSTRAINT LastName;
+
+DESC Persons;
+
+INSERT INTO Persons VALUES
+(1,'Tadivalasa','Sashank',22);
+
+ALTER TABLE Persons
+MODIFY Age INT NOT NULL;
+
+DESC Persons;
+
+ALTER TABLE Persons
+DROP CONSTRAINT unique_age;
+
+ALTER TABLE Persons
+ADD PRIMARY KEY (ID);
+
+DESC Persons;
+
+INSERT INTO Persons VALUES
+(2,'Tadivalasa','Saketh',29);
+
+ALTER TABLE Persons
+ADD CONSTRAINT check_age
+CHECK(Age >= 18);
+
+INSERT INTO Persons VALUES
+(3,'Naram','Sujata',17);
+
+INSERT INTO Persons VALUES
+(3,'Naram','Sujata',19);
+
+CREATE TABLE Persons1 (
+    ID INT NOT NULL,
+    LastName VARCHAR(255) NOT NULL,
+    FirstName VARCHAR(255),
+    Age INT,
+    City VARCHAR(255) DEFAULT 'Eluru'
+);
+
+DESC Persons1;
+
+INSERT INTO Persons1 VALUES
+(101,'Tadivalasa','ChinnaRao',52,'Vijayawada'),
+(102,'Eeerpina','Deepthi',24,'Hyderabad');
+
+CREATE TABLE Products(
+    Pid INT PRIMARY KEY,
+    Price DOUBLE NOT NULL,
+    Rating VARCHAR(10)
+);
+
+DESC Products;
+
+INSERT INTO Products VALUES
+(201,55000,'5 Star'),
+(202,25000,'4 Star');
+
+ALTER TABLE Persons1
+ADD PRIMARY KEY(ID);
+
+DESC Persons1;
+
+ALTER TABLE Persons1
+DROP PRIMARY KEY;
+
+DESC Persons1;
+
+CREATE TABLE Category(
+    cid INT PRIMARY KEY,
+    cname VARCHAR(100) NOT NULL
+);
+
+INSERT INTO Category VALUES
+(101,'Electronics'),
+(102,'Home Appliances');
+
+CREATE TABLE Products1(
+    pid INT PRIMARY KEY,
+    pname VARCHAR(100) NOT NULL,
+    cid INT,
+    FOREIGN KEY (cid) REFERENCES Category(cid)
+);
+
+DESC Products1;
+
+INSERT INTO Products1 VALUES
+(501,'Laptop',101),
+(502,'Refrigerator',102),
+(503,'Mobile',101);
